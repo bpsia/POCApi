@@ -45,8 +45,11 @@ namespace POCApp
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            _logger.Info("Login started..");
+
             var userName = txtUserName.Text;
             var passWord = txtPassword.Text;
+            _logger.Info("User was trying to login..");
             if(string.IsNullOrEmpty(userName))
             {
                 MessageBox.Show("Please enter username");
@@ -57,18 +60,22 @@ namespace POCApp
             }
             Users appUser = new Users();
             HttpResponseMessage responseMessage = await client.GetAsync(BaseUrl + "/" + "AuthenticateUser" + "/" + userName + "/" + passWord);
-
             if (responseMessage.IsSuccessStatusCode)
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
                 appUser = JsonConvert.DeserializeObject<Users>(responseData);
-
-                this.Hide();
-                WelCome form = new WelCome(appUser);
-                form.Closed += (s, args) => this.Close();
-                form.Show();
-
+                if(appUser !=null)
+                {
+                    this.Hide();
+                    WelCome form = new WelCome(appUser);
+                    form.Closed += (s, args) => this.Close();
+                    form.Show();
+                }
+                else
+                {
+                    MessageBox.Show(responseMessage.StatusCode.ToString());
+                }
             }
             else
             {
@@ -76,10 +83,6 @@ namespace POCApp
             }
             
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
