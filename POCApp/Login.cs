@@ -47,6 +47,14 @@ namespace POCApp
         {
             var userName = txtUserName.Text;
             var passWord = txtPassword.Text;
+            if(string.IsNullOrEmpty(userName))
+            {
+                MessageBox.Show("Please enter username");
+            }
+            if (string.IsNullOrEmpty(passWord))
+            {
+                MessageBox.Show("Please enter Password");
+            }
             Users appUser = new Users();
             HttpResponseMessage responseMessage = await client.GetAsync(BaseUrl + "/" + "AuthenticateUser" + "/" + userName + "/" + passWord);
 
@@ -55,11 +63,18 @@ namespace POCApp
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
                 appUser = JsonConvert.DeserializeObject<Users>(responseData);
+
+                this.Hide();
+                WelCome form = new WelCome(appUser);
+                form.Closed += (s, args) => this.Close();
+                form.Show();
+
             }
-            this.Hide();
-            WelCome form = new WelCome(appUser);
-            form.Closed += (s, args) => this.Close();
-            form.Show();
+            else
+            {
+                MessageBox.Show(responseMessage.StatusCode.ToString());
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

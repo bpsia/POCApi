@@ -98,6 +98,14 @@ namespace POCApp
             var filePath = txtFilePath.Text;
             var minSales = txtMinSalesAmount.Text;
 
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Please select a file/Add address of file");
+            }
+            if (string.IsNullOrEmpty(minSales))
+            {
+                MessageBox.Show("Please enter Min sales amount");
+            }
             List<Customers> cutomersList = new List<Customers>();
             Customers customers = null;
             using (StreamReader reader = new StreamReader(filePath))
@@ -120,9 +128,9 @@ namespace POCApp
                             {
                                 customers = new Customers()
                                 {
-                                    CustomerName = values[1].ToString(),
-                                    CustomerNumber = Convert.ToInt64(values[0]),
-                                    CustomerType = Convert.ToInt32(values[1]),
+                                    CustomerName = values[2].ToString(),
+                                    CustomerNumber = values[0],
+                                    CustomerType = (values[1] == "1") ? "Private person" : "Company",
                                     Timestamp = datestring,
                                     TotalAmountOfSales = Convert.ToDouble(values[3])
                                 };
