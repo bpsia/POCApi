@@ -37,8 +37,6 @@ namespace POCApp
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var data = LoadCustomersData();
-            dataGridView1.DataSource = data;
             this._logger = LogManager.GetLogger("POCApi");
             this.CenterToScreen();
         }
@@ -56,12 +54,15 @@ namespace POCApp
             var searchString = txtsearch.Text;
             List<Customers> customersList = new List<Customers>();
             customersList = await LoadCustomersData();
-            customersList = customersList.Where(x => x.CustomerName.Contains(searchString)
+            var data = customersList.Where(x => x.CustomerName.Contains(searchString)
                                         || x.CustomerNumber.ToString().Contains(searchString)
                                         || x.CustomerType.ToString().Contains(searchString)).ToList();
-            dataGridView1.DataSource = customersList;
+            var bindingList = new BindingList<Customers>(customersList);
+            var source = new BindingSource(bindingList, null);
+            dataGridView1.DataSource = data.ToList();
         }
-        private async Task<List<Customers>> LoadCustomersData()
+
+        public async Task<List<Customers>> LoadCustomersData()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(BaseUrl);
 
@@ -74,7 +75,13 @@ namespace POCApp
 
                 CustomersList = RequestResponce;
             }
-            return CustomersList.ToList();
+            return CustomersList.ToList().OrderByDescending(x => x.Id).ToList();
+        }
+
+        private async void SaleCustomers_Load(object sender, EventArgs e)
+        {
+            var data = await LoadCustomersData();
+            dataGridView1.DataSource = data.ToList();
         }
     }
 }

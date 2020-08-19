@@ -28,11 +28,11 @@ namespace POCApp.Models
     {
         public int Id { get; set; }
 
-        public long CustomerNumber { get; set; }
+        public string CustomerNumber { get; set; }
 
         public string CustomerName { get; set; }
 
-        public int CustomerType { get; set; }
+        public string CustomerType { get; set; }
 
         public double TotalAmountOfSales { get; set; }
 

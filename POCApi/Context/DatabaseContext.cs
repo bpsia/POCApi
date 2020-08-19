@@ -13,5 +13,9 @@ namespace POCApi.Context
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<SalesCustomers> SalesCustomers { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+        }
     }
 }

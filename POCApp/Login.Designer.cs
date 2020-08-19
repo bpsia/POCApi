@@ -43,9 +43,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(275, 24);
+            this.label1.Size = new System.Drawing.Size(257, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Wel Come Please Login Here...";
+            this.label1.Text = "Welcome please login here...";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtUserName
