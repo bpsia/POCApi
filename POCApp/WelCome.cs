@@ -88,6 +88,7 @@ namespace POCApp
 
         private async void btnSubmit_Click(object sender, EventArgs e)
         {
+            _logger.Info("Loading file..");
             string StringUrl = ConfigurationSettings.AppSettings["BaseUrl"].ToString();
             StringUrl = StringUrl + "Customers";
             client = new HttpClient();
@@ -114,6 +115,7 @@ namespace POCApp
 
                 while (null != (line = reader.ReadLine()))
                 {
+                   
                     if (!line.StartsWith("#"))
                     {
                         string[] values = line.Split(',');
@@ -165,49 +167,6 @@ namespace POCApp
                 return false;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txtMinSalesAmount_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFilePath_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
     }
 }

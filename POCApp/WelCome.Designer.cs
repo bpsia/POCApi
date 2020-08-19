@@ -63,7 +63,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Details";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnLogOut
             // 
@@ -93,7 +92,6 @@
             this.txtMinSalesAmount.Name = "txtMinSalesAmount";
             this.txtMinSalesAmount.Size = new System.Drawing.Size(307, 29);
             this.txtMinSalesAmount.TabIndex = 7;
-            this.txtMinSalesAmount.TextChanged += new System.EventHandler(this.txtMinSalesAmount_TextChanged);
             // 
             // label5
             // 
@@ -104,7 +102,6 @@
             this.label5.Size = new System.Drawing.Size(133, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Min sales amount";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // browseButton
             // 
@@ -126,7 +123,6 @@
             this.label4.Size = new System.Drawing.Size(26, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Or";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -137,7 +133,6 @@
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Upload File";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtFilePath
             // 
@@ -146,7 +141,6 @@
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.Size = new System.Drawing.Size(307, 22);
             this.txtFilePath.TabIndex = 2;
-            this.txtFilePath.TextChanged += new System.EventHandler(this.txtFilePath_TextChanged);
             // 
             // label2
             // 
@@ -157,7 +151,6 @@
             this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "File Path";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -167,12 +160,10 @@
             this.label1.Size = new System.Drawing.Size(414, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome please upload or enter your file here...";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // WelCome
             // 
